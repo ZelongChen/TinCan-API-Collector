@@ -21,6 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textSize="20sp"
+            android:textColor="@android:color/black"
             android:text="Actor"/>
         <EditText
             android:id="@+id/actor_text"
@@ -47,6 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textSize="20sp"
+            android:textColor="@android:color/black"
             android:text="Verb"/>
         <EditText
             android:id="@+id/verb_text"
@@ -72,6 +74,7 @@
             android:layout_height="wrap_content"
             android:layout_toLeftOf="@+id/object_toggle"
             android:textSize="20sp"
+            android:textColor="@android:color/black"
             android:text="Activity"/>
         <Switch
             android:id="@+id/object_toggle"
@@ -90,6 +93,7 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/object_toggle"
             android:textSize="20sp"
+            android:textColor="@android:color/black"
             android:text="Actor"/>
     </RelativeLayout>
 
@@ -108,6 +112,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textSize="20sp"
+            android:textColor="@android:color/black"
             android:text="Activity"/>
 
         <EditText
@@ -135,6 +140,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textSize="20sp"
+            android:textColor="@android:color/black"
             android:text="More info"/>
 
         <EditText
@@ -162,6 +168,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textSize="20sp"
+            android:textColor="@android:color/black"
             android:text="Description"/>
 
         <EditText
