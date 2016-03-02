@@ -5,8 +5,11 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
+import android.widget.TableRow;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -26,8 +29,13 @@ public class Main2Activity extends AppCompatActivity {
 
     EditText actorText;
     EditText verbText;
+    TextView objecTitle;
     EditText objectText;
     Switch swithButton;
+    TableRow moreinfoRow;
+    TableRow descriptionRow;
+    EditText moreinfoText;
+    EditText descriptionText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +44,30 @@ public class Main2Activity extends AppCompatActivity {
 
         actorText = (EditText) findViewById(R.id.actor_text);
         verbText = (EditText) findViewById(R.id.verb_text);
+        objecTitle = (TextView) findViewById(R.id.object_title);
         objectText = (EditText) findViewById(R.id.object_text);
         swithButton = (Switch) findViewById(R.id.object_toggle);
+        moreinfoRow = (TableRow) findViewById(R.id.moreinfo_row);
+        descriptionRow = (TableRow) findViewById(R.id.description_row);
+        moreinfoText = (EditText) findViewById(R.id.activity_moreinfo);
+        descriptionText = (EditText) findViewById(R.id.activity_description);
+
+        swithButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    objecTitle.setText("Actor");
+                    objectText.setHint("actor name");
+                    moreinfoRow.setVisibility(View.INVISIBLE);
+                    descriptionRow.setVisibility(View.INVISIBLE);
+                } else {
+                    objecTitle.setText("Activity");
+                    objectText.setHint("activity name");
+                    moreinfoRow.setVisibility(View.VISIBLE);
+                    descriptionRow.setVisibility(View.VISIBLE);
+                }
+            }
+        });
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -61,6 +91,10 @@ public class Main2Activity extends AppCompatActivity {
             actor.put("name", actorText.getText().toString());
             verb.put("display", verbText.getText().toString());
             data.put("name", objectText.getText().toString());
+            if (!swithButton.isChecked()) {
+                data.put("moreInfo", moreinfoText.getText().toString());
+                data.put("description", descriptionText.getText().toString());
+            }
             object.put("objectType", objectType);
             object.put("data", data);
             json.put("actor", actor);
