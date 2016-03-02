@@ -9,7 +9,7 @@ import com.loopj.android.http.RequestParams;
  */
 public class RestClient {
 
-    private static final String BASE_URL = "https://api.twitter.com/1/";
+    private static final String BASE_URL = "http://172.22.213.121:9250/";
 
     private static AsyncHttpClient client = new AsyncHttpClient();
 

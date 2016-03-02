@@ -49,10 +49,6 @@ public class VerbsFragment extends Fragment {
     ArrayList<String> verbs = new ArrayList();
     private void downloadVerbs() {
         RestClient.get("verbs", null, new JsonHttpResponseHandler(){
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                super.onSuccess(statusCode, headers, response);
-            }
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
@@ -63,28 +59,23 @@ public class VerbsFragment extends Fragment {
                         Log.d("JSON Exception", "onSuccess: " + e.getLocalizedMessage());
                     }
                 }
-                adapter = new ArrayAdapter(getActivity(), android.R.layout.activity_list_item, verbs.toArray());
+                adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, verbs.toArray());
                 listView.setAdapter(adapter);
             }
 
             @Override
-            public void onSuccess(int statusCode, Header[] headers, String responseString) {
-                super.onSuccess(statusCode, headers, responseString);
-            }
-
-            @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                super.onFailure(statusCode, headers, responseString, throwable);
+                Log.d("", "onSuccess: " + throwable);
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                super.onFailure(statusCode, headers, throwable, errorResponse);
+                Log.d("", "onSuccess: " + errorResponse);
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
-                super.onFailure(statusCode, headers, throwable, errorResponse);
+                Log.d("", "onSuccess: " + errorResponse);
             }
         });
     }
