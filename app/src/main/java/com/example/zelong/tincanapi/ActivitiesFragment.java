@@ -39,7 +39,6 @@ public class ActivitiesFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        downloadActivities();
     }
 
     @Override
@@ -52,6 +51,11 @@ public class ActivitiesFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        downloadActivities();
+    }
 
     private void downloadActivities() {
         RestClient.get("activities", null, new JsonHttpResponseHandler() {

@@ -32,7 +32,6 @@ public class VerbsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        downloadVerbs();
     }
 
     @Override
@@ -47,6 +46,13 @@ public class VerbsFragment extends Fragment {
     ListView listView;
     ArrayAdapter adapter;
     ArrayList<String> verbs = new ArrayList();
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        downloadVerbs();
+    }
+
     private void downloadVerbs() {
         RestClient.get("verbs", null, new JsonHttpResponseHandler(){
 

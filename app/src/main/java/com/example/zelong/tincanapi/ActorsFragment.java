@@ -34,7 +34,6 @@ public class ActorsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        downloadActors();
     }
 
     @Override
@@ -45,6 +44,12 @@ public class ActorsFragment extends Fragment {
         listView = (ListView) view.findViewById(R.id.actors_list);
 
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        downloadActors();
     }
 
     private void downloadActors() {

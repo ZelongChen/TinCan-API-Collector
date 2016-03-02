@@ -39,7 +39,6 @@ public class StatementsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        downloadStatements();
     }
 
     @Override
@@ -50,6 +49,12 @@ public class StatementsFragment extends Fragment {
         listView = (ListView) view.findViewById(R.id.statements_list);
 
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        downloadStatements();
     }
 
     private void downloadStatements() {
