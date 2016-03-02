@@ -34,6 +34,7 @@ public class ActorsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        downloadActors();
     }
 
     @Override
@@ -46,7 +47,7 @@ public class ActorsFragment extends Fragment {
         return view;
     }
 
-    private void downloadVerbs() {
+    private void downloadActors() {
         RestClient.get("actors", null, new JsonHttpResponseHandler() {
 
             @Override
