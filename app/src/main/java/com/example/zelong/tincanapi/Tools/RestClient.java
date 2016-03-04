@@ -13,7 +13,15 @@ import cz.msebera.android.httpclient.HttpEntity;
  */
 public class RestClient {
 
-    private static final String BASE_URL = "http://172.22.213.121:9250/";
+    private static String BASE_URL = "";
+
+    public static String getBaseUrl() {
+        return BASE_URL;
+    }
+
+    public static void setBaseUrl(String baseUrl) {
+        BASE_URL = "http://" + baseUrl + ":9104/";
+    }
 
     private static AsyncHttpClient client = new AsyncHttpClient();
 

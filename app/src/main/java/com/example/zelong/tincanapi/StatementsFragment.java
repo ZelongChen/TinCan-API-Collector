@@ -58,7 +58,8 @@ public class StatementsFragment extends Fragment {
     }
 
     private void downloadStatements() {
-        RestClient.get("statements", null, new JsonHttpResponseHandler() {
+        statements.clear();
+        RestClient.get("apps/cozy-learning-record-store/statements", null, new JsonHttpResponseHandler() {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
@@ -67,7 +68,18 @@ public class StatementsFragment extends Fragment {
                         JSONObject actor = response.getJSONObject(i).getJSONObject("actor");
                         JSONObject verb = response.getJSONObject(i).getJSONObject("verb");
                         JSONObject object = response.getJSONObject(i).getJSONObject("object").getJSONObject("data");
-                        statements.add(actor.getString("name") + " " + verb.getString("display") + " " + object.getString("name"));
+                        String statement = actor.getString("name") + " " + verb.getString("display") + " " + object.getString("name");
+                        if (response.getJSONObject(i).getJSONObject("object").getString("objectType").equals("activity")) {
+                            String info = object.getString("moreInfo");
+                            String description = object.getString("description");
+                            if (info != null && info.length() > 0) {
+                                statement = statement + "\n (more info: " + info + ")";
+                            }
+                            if (description != null && description.length() > 0) {
+                                statement = statement + "\n (description: " + description + ")";
+                            }
+                        }
+                        statements.add(statement);
                     } catch (JSONException e) {
                         Log.d("JSON Exception", "onSuccess: " + e.getLocalizedMessage());
                     }

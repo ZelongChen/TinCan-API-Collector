@@ -53,7 +53,8 @@ public class ActorsFragment extends Fragment {
     }
 
     private void downloadActors() {
-        RestClient.get("actors", null, new JsonHttpResponseHandler() {
+        actors.clear();
+        RestClient.get("apps/cozy-learning-record-store/actors", null, new JsonHttpResponseHandler() {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {

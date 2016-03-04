@@ -54,7 +54,8 @@ public class VerbsFragment extends Fragment {
     }
 
     private void downloadVerbs() {
-        RestClient.get("verbs", null, new JsonHttpResponseHandler(){
+        verbs.clear();
+        RestClient.get("apps/cozy-learning-record-store/verbs", null, new JsonHttpResponseHandler(){
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {

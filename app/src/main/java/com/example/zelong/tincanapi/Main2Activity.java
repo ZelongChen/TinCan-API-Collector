@@ -107,7 +107,7 @@ public class Main2Activity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        RestClient.post(this, "statements", entity, "application/json;charset=UTF-8", new JsonHttpResponseHandler() {
+        RestClient.post(this, "apps/cozy-learning-record-store/statements", entity, "application/json;charset=UTF-8", new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 Toast.makeText(Main2Activity.this, "Sucess", Toast.LENGTH_SHORT).show();

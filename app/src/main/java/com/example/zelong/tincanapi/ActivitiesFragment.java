@@ -58,7 +58,8 @@ public class ActivitiesFragment extends Fragment {
     }
 
     private void downloadActivities() {
-        RestClient.get("activities", null, new JsonHttpResponseHandler() {
+        activities.clear();
+        RestClient.get("apps/cozy-learning-record-store/activities", null, new JsonHttpResponseHandler() {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
