@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.zelong.tincanapi.Tools.RestClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -56,6 +57,21 @@ public class LoginActivity extends AppCompatActivity {
                 super.onSuccess(statusCode, headers, responseString);
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                Toast.makeText(LoginActivity.this, throwable.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                Toast.makeText(LoginActivity.this, throwable.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
+                Toast.makeText(LoginActivity.this, throwable.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

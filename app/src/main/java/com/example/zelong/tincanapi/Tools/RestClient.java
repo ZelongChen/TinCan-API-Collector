@@ -20,7 +20,7 @@ public class RestClient {
     }
 
     public static void setBaseUrl(String baseUrl) {
-        BASE_URL = "http://" + baseUrl + ":9104/";
+        BASE_URL = baseUrl + "/";
     }
 
     private static AsyncHttpClient client = new AsyncHttpClient();
